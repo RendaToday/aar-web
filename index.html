@@ -3,87 +3,121 @@
 <html lang="hr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AAR – Neživotna osiguranja</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #000000;
+            color: #000;
+            background-color: #fff;
         }
         header {
+            background-image: url('aar_hero_image.png');
+            background-size: cover;
+            background-position: center;
+            padding: 6rem 2rem;
+            color: white;
             text-align: center;
-            padding: 2rem 1rem;
-            background-color: #ffffff;
+            position: relative;
         }
-        header img {
-            max-width: 180px;
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0,0,0,0.4);
         }
-        main {
-            padding: 2rem 1rem;
+        header h1 {
+            position: relative;
+            font-size: 2.5rem;
+            margin: 0;
+            z-index: 1;
+        }
+        header a.button {
+            position: relative;
+            display: inline-block;
+            margin-top: 1.5rem;
+            background-color: #d4af37;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            z-index: 1;
+        }
+        section.services, section.benefits, section.contact {
             max-width: 900px;
-            margin: auto;
+            margin: 4rem auto;
+            padding: 0 1rem;
         }
-        h1 {
+        .icons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 2rem;
             text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
         }
-        p.description {
+        .icon-box {
+            flex: 1 1 40%;
+            margin: 1rem;
+        }
+        .icon-box img {
+            width: 40px;
+            height: 40px;
+        }
+        .icon-box p {
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+        h2 {
             text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
         }
-        ul {
+        ul.bullet-list {
             list-style: none;
-            padding: 0;
-            max-width: 600px;
-            margin: 0 auto 3rem auto;
+            padding-left: 0;
+            max-width: 500px;
+            margin: 0 auto;
         }
-        ul li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-            text-align: center;
+        ul.bullet-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
         }
-        .form-section {
-            background-color: #f9f9f9;
-            padding: 2rem 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            max-width: 600px;
-            margin: 0 auto 2rem auto;
+        ul.bullet-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #d4af37;
         }
         form {
+            max-width: 500px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
         }
         input, textarea {
+            padding: 0.75rem;
             margin-bottom: 1rem;
-            padding: 0.8rem;
-            font-size: 1rem;
-            border-radius: 6px;
             border: 1px solid #ccc;
+            border-radius: 4px;
         }
         button {
-            background-color: #000000;
-            color: white;
-            padding: 1rem;
-            font-size: 1rem;
+            background-color: #d4af37;
             border: none;
-            border-radius: 6px;
+            padding: 1rem;
+            color: white;
+            font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #333333;
+            border-radius: 4px;
         }
         footer {
             text-align: center;
-            padding: 1rem;
+            padding: 2rem 1rem;
+            background-color: #f5f5f5;
             font-size: 0.9rem;
-            color: #777;
+            color: #555;
         }
     </style>
     <script>
@@ -94,30 +128,51 @@
 </head>
 <body>
     <header>
-        <img src="AAR.png" alt="AAR logo">
+        <h1>Zaštitite ono što vam je najvrjednije</h1>
+        <a href="#kontakt" class="button">Pošaljite upit</a>
     </header>
-    <main>
-        <h1>AAR – Ugovaranje neživotnih osiguranja</h1>
-        <p class="description">Specijalizirani smo za pružanje brzih, pouzdanih i prilagođenih usluga ugovaranja svih vrsta neživotnih osiguranja.</p>
-        <ul>
-            <li>Osiguranje automobila (obvezno i kasko)</li>
-            <li>Putno zdravstveno osiguranje</li>
-            <li>Osiguranje imovine (kuće, stanovi, vikendice)</li>
-            <li>Osiguranje od odgovornosti</li>
-            <li>Osiguranje nezgode</li>
-            <li>Osiguranje plovila</li>
-            <li>Osiguranje poduzeća i poslovne opreme</li>
-        </ul>
-        <div class="form-section">
-            <form action="https://formsubmit.co/prodaja@aar.hr" method="POST">
-                <input type="text" name="name" placeholder="Vaše ime" required>
-                <input type="email" name="email" placeholder="Vaš email" required>
-                <textarea name="message" rows="6" placeholder="Vaša poruka" required></textarea>
-                <input type="hidden" name="_captcha" value="false">
-                <button type="submit">Pošalji upit</button>
-            </form>
+
+    <section class="services">
+        <div class="icons">
+            <div class="icon-box">
+                <img src="https://img.icons8.com/ios-filled/50/home.png" alt="Kuća">
+                <p>Kućno osiguranje</p>
+            </div>
+            <div class="icon-box">
+                <img src="https://img.icons8.com/ios-filled/50/car.png" alt="Auto">
+                <p>Auto osiguranje</p>
+            </div>
+            <div class="icon-box">
+                <img src="https://img.icons8.com/ios-filled/50/suitcase.png" alt="Putovanje">
+                <p>Putno osiguranje</p>
+            </div>
+            <div class="icon-box">
+                <img src="https://img.icons8.com/ios-filled/50/shield.png" alt="Odgovornost">
+                <p>Osiguranje od odgovornosti</p>
+            </div>
         </div>
-    </main>
+    </section>
+
+    <section class="benefits">
+        <h2>Zašto AAR?</h2>
+        <ul class="bullet-list">
+            <li>Povjerenje i sigurnost</li>
+            <li>Brza i jednostavna obrada zahtjeva</li>
+            <li>Prilagođena rješenja</li>
+        </ul>
+    </section>
+
+    <section class="contact" id="kontakt">
+        <h2>Kontakt</h2>
+        <form action="https://formsubmit.co/prodaja@aar.hr" method="POST">
+            <input type="text" name="name" placeholder="Ime i prezime" required>
+            <input type="email" name="email" placeholder="Email adresa" required>
+            <textarea name="message" placeholder="Poruka" rows="6" required></textarea>
+            <input type="hidden" name="_captcha" value="false">
+            <button type="submit">Pošalji</button>
+        </form>
+    </section>
+
     <footer>
         &copy; 2025 AAR. Sva prava pridržana.
     </footer>
