@@ -7,77 +7,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --gold: #d4af37;
+        }
+        * { box-sizing: border-box; }
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
             color: #000;
             background-color: #fff;
         }
+        /* ---------- HERO ---------- */
         header {
+            position: relative;
             background-image: url('aar_hero_image.png');
             background-size: cover;
             background-position: center;
-            padding: 6rem 2rem;
-            color: white;
+            min-height: 65vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
             text-align: center;
-            position: relative;
+            color: #fff;
         }
         header::before {
             content: '';
             position: absolute;
             inset: 0;
-            background-color: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.45);
+        }
+        header h1, header .button {
+            position: relative;
+            z-index: 1;
         }
         header h1 {
-            position: relative;
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 4vw + 1rem, 3rem);
             margin: 0;
-            z-index: 1;
+            line-height: 1.2;
         }
-        header a.button {
-            position: relative;
-            display: inline-block;
+        header .button {
             margin-top: 1.5rem;
-            background-color: #d4af37;
-            color: white;
-            padding: 0.75rem 1.5rem;
+            background: var(--gold);
+            color: #fff;
             text-decoration: none;
+            padding: 0.8rem 1.6rem;
             border-radius: 4px;
-            font-weight: bold;
-            z-index: 1;
+            font-weight: 600;
+            transition: background 0.3s ease;
         }
-        section.services, section.benefits, section.contact {
-            max-width: 900px;
+        header .button:hover { background: #b5932f; }
+
+        /* ---------- SECTIONS ---------- */
+        section {
+            max-width: 1000px;
             margin: 4rem auto;
             padding: 0 1rem;
         }
         .icons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 2rem 1rem;
             text-align: center;
         }
-        .icon-box {
-            flex: 1 1 40%;
-            margin: 1rem;
-        }
-        .icon-box img {
-            width: 40px;
-            height: 40px;
-        }
-        .icon-box p {
-            margin-top: 0.5rem;
-            font-weight: 600;
-        }
-        h2 {
-            text-align: center;
-            margin-bottom: 1rem;
-        }
+        .icon-box img { width: 48px; height: 48px; }
+        .icon-box p { margin-top: 0.6rem; font-weight: 600; }
+
+        h2 { text-align: center; margin-bottom: 1rem; }
+
         ul.bullet-list {
             list-style: none;
             padding-left: 0;
-            max-width: 500px;
+            max-width: 550px;
             margin: 0 auto;
         }
         ul.bullet-list li {
@@ -86,38 +88,52 @@
             margin-bottom: 0.8rem;
         }
         ul.bullet-list li::before {
-            content: '•';
+            content: '';
             position: absolute;
-            left: 0;
-            color: #d4af37;
+            left: 0; top: 8px;
+            width: 8px; height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
         }
-        form {
-            max-width: 500px;
+
+        /* ---------- CONTACT ---------- */
+        .contact form {
+            max-width: 550px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
         }
         input, textarea {
-            padding: 0.75rem;
+            padding: 0.8rem;
             margin-bottom: 1rem;
             border: 1px solid #ccc;
             border-radius: 4px;
+            font-size: 1rem;
         }
         button {
-            background-color: #d4af37;
+            background: var(--gold);
             border: none;
             padding: 1rem;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
+            color: #fff;
+            font-weight: 600;
             border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
         }
+        button:hover { background: #b5932f; }
+
         footer {
             text-align: center;
             padding: 2rem 1rem;
-            background-color: #f5f5f5;
+            background: #f7f7f7;
             font-size: 0.9rem;
-            color: #555;
+            color: #666;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 600px) {
+            header { min-height: 60vh; }
+            .icons { gap: 1.5rem 0.5rem; }
         }
     </style>
     <script>
@@ -127,23 +143,25 @@
     </script>
 </head>
 <body>
+    <!-- HERO -->
     <header>
-        <h1>Zaštitite ono što vam je najvrjednije</h1>
+        <h1>Zaštitite ono što vam je najvrijednije</h1>
         <a href="#kontakt" class="button">Pošaljite upit</a>
     </header>
 
-    <section class="services">
+    <!-- SERVICES ICONS -->
+    <section>
         <div class="icons">
             <div class="icon-box">
-                <img src="https://img.icons8.com/ios-filled/50/home.png" alt="Kuća">
-                <p>Kućno osiguranje</p>
+                <img src="https://img.icons8.com/ios-filled/50/home.png" alt="Osiguranje imovine">
+                <p>Osiguranje imovine</p>
             </div>
             <div class="icon-box">
-                <img src="https://img.icons8.com/ios-filled/50/car.png" alt="Auto">
+                <img src="https://img.icons8.com/ios-filled/50/car.png" alt="Auto osiguranje">
                 <p>Auto osiguranje</p>
             </div>
             <div class="icon-box">
-                <img src="https://img.icons8.com/ios-filled/50/suitcase.png" alt="Putovanje">
+                <img src="https://img.icons8.com/ios-filled/50/suitcase.png" alt="Putno osiguranje">
                 <p>Putno osiguranje</p>
             </div>
             <div class="icon-box">
@@ -153,7 +171,8 @@
         </div>
     </section>
 
-    <section class="benefits">
+    <!-- BENEFITS -->
+    <section>
         <h2>Zašto AAR?</h2>
         <ul class="bullet-list">
             <li>Povjerenje i sigurnost</li>
@@ -162,6 +181,7 @@
         </ul>
     </section>
 
+    <!-- CONTACT -->
     <section class="contact" id="kontakt">
         <h2>Kontakt</h2>
         <form action="https://formsubmit.co/prodaja@aar.hr" method="POST">
